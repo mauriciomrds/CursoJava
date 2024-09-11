@@ -24,6 +24,8 @@ public class CalculadoraImc {
 		if(resultado >25){
 			
 			JOptionPane.showInternalMessageDialog(null, " O seu IMC muito alto está obeso! " +  resultado);
+			
+			System.out.println("teste");
 		}
 		
 	} 
