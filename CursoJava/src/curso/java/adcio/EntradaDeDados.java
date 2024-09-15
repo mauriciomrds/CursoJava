@@ -16,7 +16,21 @@ double pessoaNumero = Double.parseDouble(pessoas);
 int divisao = (int)(carroNumero /pessoaNumero);
 double resto = carroNumero % pessoaNumero;
 
-JOptionPane.showInternalMessageDialog(null, "Divisão para pessoas deu: "+ divisao + " carro e sobrou: "+ resto + " carros");		
+
+int resposta =JOptionPane.showConfirmDialog(null, "Deseja ver o resultado da divisão?");
+
+if(resposta == 0) {
+	JOptionPane.showInternalMessageDialog(null, "Divisão para pessoas deu: "+ divisao);
+}
+
+resposta = JOptionPane.showConfirmDialog(null, "Deseja ver o Resto da divisão?");
+
+if(resposta == 0) {
+	JOptionPane.showInternalMessageDialog(null, "O resto da divisão é:" + resto);
+}
+
+
+//JOptionPane.showInternalMessageDialog(null, "Divisão para pessoas deu: "+ divisao + " carro e sobrou: "+ resto + " carros");		
 		
 	}
 	
