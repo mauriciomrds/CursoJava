@@ -1,9 +1,13 @@
 package cursojava.classes;
+
+import java.util.Objects;
+
 /* classe que representa objeto Aluno*/
 public class Aluno {
 
  private String nome;
  private int idade;
+ private String dataNascimento;
  private String registroGeral;
  private String numeroCpf;
  private String nomeMae;
@@ -13,10 +17,43 @@ public class Aluno {
  private String serieMatriculado;
  
  private double nota1;
- private double nota2;
- private double nota3;
- private double nota4;
+ private String diciplina1;
  
+ private double nota2;
+ private String diciplina2;
+
+ private double nota3;
+ private String diciplina3;
+ 
+ private double nota4;
+ private String diciplina4;
+ 
+ 
+ 
+public String getDiciplina1() {
+	return diciplina1;
+}
+public void setDiciplina1(String diciplina1) {
+	this.diciplina1 = diciplina1;
+}
+public String getDiciplina2() {
+	return diciplina2;
+}
+public void setDiciplina2(String diciplina2) {
+	this.diciplina2 = diciplina2;
+}
+public String getDiciplina3() {
+	return diciplina3;
+}
+public void setDiciplina3(String diciplina3) {
+	this.diciplina3 = diciplina3;
+}
+public String getDiciplina4() {
+	return diciplina4;
+}
+public void setDiciplina4(String diciplina4) {
+	this.diciplina4 = diciplina4;
+}
 //Construtor default
   public Aluno() {
 
@@ -48,6 +85,13 @@ public int getIdade() {
 }
 public void setIdade(int idade) {
 	this.idade = idade;
+}
+
+public String getDataNascimento() {
+	return dataNascimento;
+}
+public void setDataNascimento(String dataNascimento) {
+	this.dataNascimento = dataNascimento;
 }
 public String getRegistroGeral() {
 	return registroGeral;
@@ -91,6 +135,7 @@ public String getSerieMatriculado() {
 public void setSerieMatriculado(String serieMatriculado) {
 	this.serieMatriculado = serieMatriculado;
 }
+
 public double getNota1() {
 	return nota1;
 }
@@ -138,5 +183,37 @@ public boolean getAlunoAprovado() {
 		}else {
 		return "Aluno está reprovado!";	
 		}
+		
 }
-}
+		
+		
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", nota1=" + nota1 + ", diciplina1=" + diciplina1 + ", nota2=" + nota2
+				+ ", diciplina2=" + diciplina2 + ", nota3=" + nota3 + ", diciplina3=" + diciplina3 + ", nota4=" + nota4
+				+ ", diciplina4=" + diciplina4 + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome, numeroCpf);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		return Objects.equals(nome, other.nome) && Objects.equals(numeroCpf, other.numeroCpf);
+	}
+	
+
+	}
+
