@@ -1,5 +1,8 @@
 package cursojava.executavel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
@@ -9,8 +12,12 @@ public class SegundaClasseJava {
 
 	public static void main(String[] args) {
 		
-		String nome = JOptionPane.showInputDialog("Informe o nome do aluno: ");
-		String idade = JOptionPane.showInputDialog("Informe  idade do aluno: ");
+		List<Aluno>alunos = new ArrayList<Aluno>();
+		
+		   for(int qtd = 1; qtd <=2; qtd ++) {
+		
+		String nome = JOptionPane.showInputDialog("Informe o nome do aluno: "+ qtd + " ?");
+		/*String idade = JOptionPane.showInputDialog("Informe  idade do aluno: ");
 		String dataNascimento = JOptionPane.showInputDialog("Informe a data nascimento: ");
 		String rg = JOptionPane.showInputDialog("Informe  rg do aluno: ");
 		String cpf = JOptionPane.showInputDialog("Informe o cpf do aluno: ");
@@ -18,7 +25,7 @@ public class SegundaClasseJava {
 		String pai = JOptionPane.showInputDialog("Informe o nome do pai do aluno:");
 		String data = JOptionPane.showInputDialog("Informe a data da matricula: ");
 		String escola = JOptionPane.showInputDialog("Informe o nome da escola: ");
-		String serie = JOptionPane.showInputDialog("Informe a serie do aluno: ");
+		String serie = JOptionPane.showInputDialog("Informe a serie do aluno: ");*/
 		
 	/*	String disciplina1 =JOptionPane.showInputDialog("Disciplina1");
 		String nota1 = JOptionPane.showInputDialog("Nota1");
@@ -36,11 +43,10 @@ public class SegundaClasseJava {
 		Aluno aluno1 = new Aluno();
 		
 		
-	   
 		 
 		   
 		   aluno1.setNome(nome);
-	       aluno1.setIdade(Integer.valueOf(idade));
+	     /*  aluno1.setIdade(Integer.valueOf(idade));
 	       aluno1.setDataNascimento(dataNascimento);
 	       aluno1.setRegistroGeral(rg);
 	       aluno1.setNumeroCpf(cpf);
@@ -48,7 +54,7 @@ public class SegundaClasseJava {
 	       aluno1.setNomePai(pai);
 	       aluno1.setDataMatricula(data);
 	       aluno1.setNomeEscola(escola);
-	       aluno1.setSerieMatriculado(serie);
+	       aluno1.setSerieMatriculado(serie);*/
 	       
 	       
 	       for(int pos = 1 ; pos <= 4 ; pos ++) {
@@ -63,30 +69,37 @@ public class SegundaClasseJava {
 	    	   aluno1.getDisciplinas().add(disciplina);
 	    	   
 	       }
+	       int escolha = JOptionPane.showConfirmDialog(null," Deseja remover alguma disciplina ? ");
+	       
+	       if(escolha == 0) {//Opção Sim é igual a 0
+	    	   
+	    	   
+	    	   int continuarRemovendo = 0;
+	    	   int posicao = 1;
+	    	      	   
+	    	   while(continuarRemovendo == 0) {
+	    	   String disciplinaRemover = JOptionPane.showInputDialog("Qual disciplina 1, 2, 3, 4 ?");
+	    	   aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
+	    	   posicao ++;
+	    	   continuarRemovendo = JOptionPane.showConfirmDialog(null,"Deseja continuar removendo?" );
+	    	   }
+	       }
+	       
+	       alunos.add(aluno1);
+	       
+	   }  
+		   for (Aluno aluno : alunos) {
+			   
+			   //Metodo toString
+	           System.out.println(aluno);
+	           System.out.println("Nota do Aluno1: "+ aluno.getMediaNota());
+		       System.out.println("Resultado: "+ aluno.getAlunoAprovado2());
+		     System.out.println("===============================================================================");
+		}
 	       
 	       
-	      /* System.out.println("Nome do Aluno1: "+ aluno1.getNome());
-	       System.out.println("Idade do Aluno1: "+ aluno1.getIdade());
-	       System.out.println("Data de nascimento de Aluno1: "+ aluno1.getDataNascimento());
-	       System.out.println("RG do Aluno1: "+ aluno1.getRegistroGeral());
-	       System.out.println("CPF do Aluno1: "+ aluno1.getNumeroCpf());
-	       System.out.println("Nome da Mãe do Aluno1: "+ aluno1.getNomeMae());
-	       System.out.println("Nome do Pai do Aluno1: "+ aluno1.getNomePai());
-	       System.out.println("Data da Matricula do Aluno1: "+ aluno1.getDataMatricula());
-	       System.out.println("Nome do Colegio do Aluno1: "+ aluno1.getNomeEscola());
-	       System.out.println("Numero do registro do Aluno1: "+ aluno1.getSerieMatriculado());
-	       System.out.println("Nota do Aluno1: "+ aluno1.getMediaNota());
-	       System.out.println("Resultado: "+ aluno1.getAlunoAprovado2());*/
-	       
-	       
-	       
-	       
-	       //System.out.println("===============================================================================");
 	         
-	      //Metodo toString
-           System.out.println(aluno1);
-           System.out.println("Nota do Aluno1: "+ aluno1.getMediaNota());
-	       System.out.println("Resultado: "+ aluno1.getAlunoAprovado2());
+	     
           
 		
 		
