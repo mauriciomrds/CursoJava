@@ -1,6 +1,7 @@
 package cursojava.executavel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -13,13 +14,31 @@ public class SegundaClasseJava {
 
 	public static void main(String[] args) {
 		
+		//Validação de acesso do Usuário no sistema de alunos
+		String login =JOptionPane.showInputDialog("Informe o seu login");
+		String senha =JOptionPane.showInputDialog("Informe sua senha");
+		
+		if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+		
+			
+			
+			
+			
+		
 		//Criação lista alunos
 		List<Aluno>alunos = new ArrayList<Aluno>();
 		
+		/*
 		//Criação de nova lista de alunos APROVADO, REPROVADO E RECUPERAÇÃO
 		List<Aluno>alunosAprovados = new ArrayList<Aluno>();
 		List<Aluno>alunosRecuperacao = new ArrayList<Aluno>();
 		List<Aluno>alunosReprovados = new ArrayList<Aluno>();
+		*/
+		
+		//Criação de uma lista dentro de outra lista que contém uma chave de identificação de valores de outra lista
+		HashMap<String, List<Aluno>>maps = new  HashMap<String, List<Aluno>>();
+		
+		
 		
 		//lista for por quantidade de alunos
 		   for(int qtd = 1; qtd <=5; qtd ++) {
@@ -99,6 +118,13 @@ public class SegundaClasseJava {
 	       alunos.add(aluno1);
 	       
 		   } 
+		   
+		   //chave setada para recuperar valores da lista
+		   maps.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
+		   maps.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
+		   maps.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());
+		   
+		   
 		   //Pecorrendo lista de alunos
 		/*   for (Aluno aluno : alunos) {
 			   
@@ -182,41 +208,60 @@ public class SegundaClasseJava {
 			   
 			   // Se aluno for aprovado será adicionado na lista alunosAprovados
 			   if(aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.APROVADO)) {
-				   
+				  /* 
 				   alunosAprovados.add(aluno);
+				   */
+				   //Recuperando valores com hash
+				   maps.get(StatusAluno.APROVADO).add(aluno);
 				   }
 			   //Senão se aluno ficar de recuperação será adicionado na lista alunosRecuperação
 			   else if(aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
-				   
+				/*  
+				  
 				   alunosRecuperacao.add(aluno);
+				   */
+				 //Recuperando valores com hash
+				   maps.get(StatusAluno.RECUPERACAO).add(aluno);
 			   }
 			   //Senão se aluno for reprovado será adicionado na lista alunosReprovado
 			   else if(aluno.getAlunoAprovado2().equalsIgnoreCase(StatusAluno.REPROVADO)){
-				  alunosReprovados.add(aluno); 
-				  
+				 /*
+				   alunosReprovados.add(aluno); 
+				  */
+				   //Recuperando valores com hash
+				   maps.get(StatusAluno.REPROVADO).add(aluno);
 			   }
 			   		   
 				   
 		   }
 			   
 		   System.out.println("----------------Lista dos alunos Aprovados-------------------------");
-		   for(Aluno aluno : alunosAprovados) {
+		   /*  for(Aluno aluno : alunosAprovados)*/
+		   
+		     for(Aluno aluno :maps.get(StatusAluno.APROVADO) ){
 			   
-			   System.out.println("Resultado =  "+ aluno.getNome()+ " com média de = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   System.out.println("Resultado =  "+ aluno.getNome()+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
              
 		   
 		   System.out.println("----------------Lista dos alunos Reprovados------------------------");
-		   for(Aluno aluno : alunosReprovados) {
+		  /* for(Aluno aluno : alunosReprovados)*/
+		   
+		   for (Aluno aluno :maps.get(StatusAluno.REPROVADO)){
 			   
-			   System.out.println("Resultado = "+ aluno.getNome()+ " com média de = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   System.out.println("Resultado = "+ aluno.getNome()+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
 		   
 		   
 		   System.out.println("----------------Lista dos alunos Recuperação-----------------------");
-		   for(Aluno aluno : alunosRecuperacao) {
+		   /*for(Aluno aluno : alunosRecuperacao)*/
+		   
+		   for(Aluno aluno :maps.get(StatusAluno.RECUPERACAO)){
 			   
-			   System.out.println("Resultado  = "+ aluno.getNome() +" com média de = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   System.out.println("Resultado  = "+ aluno.getNome() +" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
+	  }
 	}
-}
+}	
+
+

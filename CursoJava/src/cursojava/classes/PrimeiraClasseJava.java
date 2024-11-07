@@ -1,6 +1,4 @@
-package cursojava.executavel;
-
-import cursojava.classes.Aluno;
+package cursojava.classes;
 
 public class PrimeiraClasseJava {
 
@@ -8,8 +6,12 @@ public class PrimeiraClasseJava {
 		
 	 
       Aluno aluno1 = new Aluno();//joão
+   
+      
+      
        aluno1.setNome("Joao da Silva");
        aluno1.setIdade(16);
+       aluno1.setDataNascimento("27/03/1987");
        aluno1.setRegistroGeral("479.645.987.61");
        aluno1.setNumeroCpf("28.897.678.89");
        aluno1.setNomeMae("Maria da Penha");
@@ -17,12 +19,42 @@ public class PrimeiraClasseJava {
        aluno1.setDataMatricula("22/03/2023");
        aluno1.setNomeEscola("Colegio Talento");
        aluno1.setSerieMatriculado("778");
-       aluno1.setNota1(10);
-       aluno1.setNota2(5);
-       aluno1.setNota3(5);
-       aluno1.setNota4(8);
        
-       System.out.println("===============================================================================");
+       Disciplina disciplinas1= new Disciplina();
+       disciplinas1.setDisciplina("Banco de Dados");
+       disciplinas1.setNota(8);
+       
+       aluno1.getDisciplinas().add(disciplinas1);
+       
+       Disciplina disciplinas2= new Disciplina();
+       disciplinas2.setDisciplina("Java Web");
+       disciplinas2.setNota(7);
+       
+       aluno1.getDisciplinas().add(disciplinas2);
+       
+       Disciplina disciplinas3= new Disciplina();
+       disciplinas3.setDisciplina("Arquitetura de Software");
+       disciplinas3.setNota(9);
+       
+       aluno1.getDisciplinas().add(disciplinas3);
+       
+       Disciplina disciplinas4= new Disciplina();
+       disciplinas4.setDisciplina("Logica de Programação");
+       disciplinas4.setNota(5);
+       
+       aluno1.getDisciplinas().add(disciplinas4);
+       
+       
+	      //Metodo toString
+        System.out.println(aluno1);
+        System.out.println("Nota do Aluno1: "+ aluno1.getMediaNota());
+        System.out.println("Resultado: "+ aluno1.getAlunoAprovado2());
+      // aluno1.getDisciplina().setNota1(10);
+      // aluno1.getDisciplina().setNota2(5);
+      // aluno1.getDisciplina().setNota3(5);
+     //  aluno1.getDisciplina().setNota4(8);
+       
+       /*System.out.println("===============================================================================");
        
        System.out.println("Nome do Aluno1: "+ aluno1.getNome());
        System.out.println("Idade do Aluno1: "+ aluno1.getIdade());
@@ -41,7 +73,7 @@ public class PrimeiraClasseJava {
       
       Aluno aluno2 = new Aluno();//pedro
       aluno2.setNome("Pedro Oliveira");
-      aluno2.setIdade(16);
+      aluno2.setIdade(16); 
       aluno2.setRegistroGeral("879.649.987.61");
       aluno2.setNumeroCpf("328.897.678.89");
       aluno2.setNomeMae("Marina da Penha");
@@ -49,10 +81,11 @@ public class PrimeiraClasseJava {
       aluno2.setDataMatricula("22/03/2023");
       aluno2.setNomeEscola("Colegio Talento");
       aluno2.setSerieMatriculado("779");
-      aluno2.setNota1(6);
-      aluno2.setNota2(4);
-      aluno2.setNota3(8);
-      aluno2.setNota4(5);
+      
+    //  aluno2.getDisciplina().setNota1(6);
+   //   aluno2.getDisciplina().setNota2(4);
+   //   aluno2.getDisciplina().setNota3(8);
+   //   aluno2.getDisciplina().setNota4(5);
                       
       System.out.println("Nome do Aluno2: "+ aluno2.getNome());
       System.out.println("Idade do Aluno2: "+ aluno2.getIdade());
@@ -79,10 +112,11 @@ public class PrimeiraClasseJava {
       aluno3.setDataMatricula("22/03/2023");
       aluno3.setNomeEscola("Colegio Talento");
       aluno3.setSerieMatriculado("780");
-      aluno3.setNota1(9);
-      aluno3.setNota2(9);
-      aluno3.setNota3(7);
-      aluno3.setNota4(4);
+      
+      //aluno3.getDisciplina().setNota1(9);
+      //aluno3.getDisciplina().setNota2(9);
+      //aluno3.getDisciplina().setNota3(7);
+    //  aluno3.getDisciplina().setNota4(6);
             
       System.out.println("Nome do Aluno3: "+ aluno3.getNome());
       System.out.println("Idade do Aluno3: "+ aluno3.getIdade());
@@ -98,13 +132,34 @@ public class PrimeiraClasseJava {
       System.out.println("Resultado 2: "+ aluno3.getAlunoAprovado2());
       
       System.out.println("===============================================================================");
-      
+      */
+       
+       
       /*Aluno criado definido no constutor com um parametro nomePadrão*/
       Aluno aluno4 = new Aluno("Maria");
       
       /*Aluno criado definido no constutor com dois parametro nomePadrão e idadePadrão*/
       Aluno aluno5 = new Aluno("Paulo", 35);
       
+      
+      
+      /*Metodo Equals e hashcode( Diferenciar e comparar objeto)*/
+		
+		Aluno aluno7 = new Aluno();
+		aluno5.setNome("Mauricio");
+		aluno5.setNumeroCpf("123");
+		
+		Aluno aluno6 = new Aluno();
+		aluno6.setNome("Mauricio");
+		aluno6.setNumeroCpf("1234");
+		
+		if(aluno5.equals(aluno6)) {
+			System.out.println("Alunos são iguais.");
+		}else {
+			System.out.println("Alunos são diferentes.");
+		}
+      
 	}
 
 }
+

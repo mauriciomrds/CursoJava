@@ -1,6 +1,10 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import cursojava.constantes.StatusAluno;
 
 /* classe que representa objeto Aluno*/
 public class Aluno {
@@ -16,43 +20,16 @@ public class Aluno {
  private String nomeEscola;
  private String serieMatriculado;
  
- private double nota1;
- private String diciplina1;
  
- private double nota2;
- private String diciplina2;
+ 
+  private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
- private double nota3;
- private String diciplina3;
- 
- private double nota4;
- private String diciplina4;
- 
- 
- 
-public String getDiciplina1() {
-	return diciplina1;
+  
+public List<Disciplina> getDisciplinas() {
+	return disciplinas;
 }
-public void setDiciplina1(String diciplina1) {
-	this.diciplina1 = diciplina1;
-}
-public String getDiciplina2() {
-	return diciplina2;
-}
-public void setDiciplina2(String diciplina2) {
-	this.diciplina2 = diciplina2;
-}
-public String getDiciplina3() {
-	return diciplina3;
-}
-public void setDiciplina3(String diciplina3) {
-	this.diciplina3 = diciplina3;
-}
-public String getDiciplina4() {
-	return diciplina4;
-}
-public void setDiciplina4(String diciplina4) {
-	this.diciplina4 = diciplina4;
+public void setDisciplinas(List<Disciplina> disciplinas) {
+	this.disciplinas = disciplinas;
 }
 //Construtor default
   public Aluno() {
@@ -136,34 +113,16 @@ public void setSerieMatriculado(String serieMatriculado) {
 	this.serieMatriculado = serieMatriculado;
 }
 
-public double getNota1() {
-	return nota1;
-}
-public void setNota1(double nota1) {
-	this.nota1 = nota1;
-}
-public double getNota2() {
-	return nota2;
-}
-public void setNota2(double nota2) {
-	this.nota2 = nota2;
-}
-public double getNota3() {
-	return nota3;
-}
-public void setNota3(double nota3) {
-	this.nota3 = nota3;
-}
-public double getNota4() {
-	return nota4;
-}
-public void setNota4(double nota4) {
-	this.nota4 = nota4;
-}
-/*Metodo para calular nota do aluno*/
+/*Metodo para calcular nota do aluno*/
 public double getMediaNota() {
-	return (nota1 + nota2 + nota3 + nota4) / 4;
+	
+	double somaNotas = 0;
+	for (Disciplina disciplina : disciplinas) {
+		somaNotas += disciplina.getNota();
+	}
+		return somaNotas /disciplinas.size();	
 }
+
 /*Metodo para retorna se aluno está aprovado true ou false*/
 public boolean getAlunoAprovado() {
 	double media =this.getMediaNota();
@@ -177,25 +136,16 @@ public boolean getAlunoAprovado() {
 	public String getAlunoAprovado2() {
 		double media =this.getMediaNota();
 		if(media >= 7) {
-		return "Aluno está aprovado!";	
+		return StatusAluno.APROVADO;	
 		}else if(media>=5 && media<=6.75){
-		return	"Aluno de recuperação";
+		return	StatusAluno.RECUPERACAO;
 		}else {
-		return "Aluno está reprovado!";	
+		return StatusAluno.REPROVADO;	
 		}
 		
 }
+	
 		
-		
-	@Override
-	public String toString() {
-		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
-				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
-				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
-				+ serieMatriculado + ", nota1=" + nota1 + ", diciplina1=" + diciplina1 + ", nota2=" + nota2
-				+ ", diciplina2=" + diciplina2 + ", nota3=" + nota3 + ", diciplina3=" + diciplina3 + ", nota4=" + nota4
-				+ ", diciplina4=" + diciplina4 + "]";
-	}
 
 
 	@Override
@@ -213,6 +163,15 @@ public boolean getAlunoAprovado() {
 		Aluno other = (Aluno) obj;
 		return Objects.equals(nome, other.nome) && Objects.equals(numeroCpf, other.numeroCpf);
 	}
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", disciplinas=" + disciplinas + "]";
+	}
+	
+	
 	
 
 	}

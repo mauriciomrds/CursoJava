@@ -6,6 +6,7 @@ public class CalculadoraImc {
 	
 	public static void main(String[]args) {
 		
+		/* Indice de Massa Corporal*/
 		
 	String altura =	JOptionPane.showInputDialog(" Digite sua altura: ");
 	String peso = JOptionPane.showInputDialog(" Digite o seu peso: ");
@@ -25,8 +26,7 @@ public class CalculadoraImc {
 			
 			JOptionPane.showInternalMessageDialog(null, " O seu IMC muito alto está obeso! " +  resultado);
 			
-			System.out.println("teste new");
-		}
+				}
 		
 	} 
 }
