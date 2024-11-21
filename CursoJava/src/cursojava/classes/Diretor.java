@@ -3,7 +3,7 @@ package cursojava.classes;
 //Classe (filha) Diretor herdando da classe (Pai) Pessoa
 public class Diretor extends Pessoa{
 	
-	
+	//Atributos da classe Diretor
 	private String registroEducacao;
 	private int tempoDirecao;
 	private String titulacao;
@@ -28,12 +28,18 @@ public class Diretor extends Pessoa{
 	public void setTitulacao(String titulacao) {
 		this.titulacao = titulacao;
 	}
-	@Override
+	@Override //toString para facilitar a impressão dos atributos da classe Diretor
 	public String toString() {
 		return "Diretor [registroEducacao=" + registroEducacao + ", tempoDirecao=" + tempoDirecao + ", titulacao="
 				+ titulacao + ", nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento
 				+ ", registroGeral=" + registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae
 				+ ", nomePai=" + nomePai + "]";
+	}
+	@Override
+	//Metodo salario sub escrito da classe pai Pessoa
+	public double salario() {
+		
+		return 5000.00;
 	}
 	
 	
