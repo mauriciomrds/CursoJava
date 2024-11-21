@@ -2,9 +2,9 @@ package cursojava.classes;
 
 
 //Classe pai ou super classe  ou classe master (atributos em comum em todos os objetos das classes filhas ou subclasse)
-public class Pessoa {
+public abstract class Pessoa {
 
-
+   //Atributos da classe pai Pessoa
 	 protected String nome;
 	 protected int idade;
 	 protected String dataNascimento;
@@ -13,7 +13,7 @@ public class Pessoa {
 	 protected String nomeMae;
 	 protected String nomePai;
 	 
-	 
+	 public abstract double salario();
 	 
 	public String getNome() {
 		return nome;
@@ -57,7 +57,9 @@ public class Pessoa {
 	public void setNomePai(String nomePai) {
 		this.nomePai = nomePai;
 	}
-	@Override
+	@Override 
+	
+	//toString para facilitar a impressão dos atributos da classe Pessoa
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
 				+ registroGeral + ", numeroCpf=" + numeroCpf + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
@@ -66,7 +68,9 @@ public class Pessoa {
 				+ getNumeroCpf() + ", getNomeMae()=" + getNomeMae() + ", getNomePai()=" + getNomePai() + "]";
 	}
 	
-	
-	
+	//metodo vai retornar true se for maior de 18  senão vai retorna false
+	public boolean pessoaMaiorIdade() {
+		return idade >= 18;
+	}
 	 
 }
