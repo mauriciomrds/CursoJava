@@ -6,16 +6,10 @@ import java.util.Objects;
 
 import cursojava.constantes.StatusAluno;
 
-/* classe que representa objeto Aluno*/
-public class Aluno {
+/* classe que representa objeto Aluno*/ // Herança- classe(filha)Aluno vai herdar da classe (Pai) extends Pessoa
+public class Aluno extends Pessoa {
 
- private String nome;
- private int idade;
- private String dataNascimento;
- private String registroGeral;
- private String numeroCpf;
- private String nomeMae;
- private String nomePai;
+	//atributos de Aluno
  private String dataMatricula;
  private String nomeEscola;
  private String serieMatriculado;
@@ -171,8 +165,26 @@ public boolean getAlunoAprovado() {
 				+ serieMatriculado + ", disciplinas=" + disciplinas + "]";
 	}
 	
-	
+	@Override 
+	//Pode subscrever metodo
+	//metodo pessoaMaiorIdade que foi criado na classe (pai Pessoa) que pode ser recuperado e outra classe
+	public boolean pessoaMaiorIdade() {
+		
+		return idade >= 21;
+	}
+		public String msgMaiorIdade() {
+			return this.pessoaMaiorIdade() ? "Obaa, aluno é maior de idade" :"Ixi, aluno é menor de idade";
+			
+		}
+		@Override
+		//Metodo salario sub escrito da classe pai Pessoa   
+		public double salario() {
+			
+			return 1900.00;
+		}
+		
+	}
 	
 
-	}
+	
 
