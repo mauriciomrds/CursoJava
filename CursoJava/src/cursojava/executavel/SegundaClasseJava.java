@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
 import cursojava.constantes.StatusAluno;
 
 public class SegundaClasseJava {
@@ -18,12 +19,15 @@ public class SegundaClasseJava {
 		String login =JOptionPane.showInputDialog("Informe o seu login");
 		String senha =JOptionPane.showInputDialog("Informe sua senha");
 		
-		if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+		Secretario secretario = new Secretario();//Diretamente com objeto
 		
-			
-			
-			
-			
+		secretario.setLogin(login);
+		secretario.setSenha(senha);
+		
+		
+		if(secretario.autenticar()) {// Se true acessa Senão não acessa
+		
+					
 		
 		//Criação lista alunos
 		List<Aluno>alunos = new ArrayList<Aluno>();
@@ -241,6 +245,7 @@ public class SegundaClasseJava {
 		     for(Aluno aluno :maps.get(StatusAluno.APROVADO) ){
 			   
 			   System.out.println("Resultado =  "+ aluno.getNome()+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado =  "+ aluno.getNome()+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2() );
 		   }
              
 		   
@@ -250,6 +255,7 @@ public class SegundaClasseJava {
 		   for (Aluno aluno :maps.get(StatusAluno.REPROVADO)){
 			   
 			   System.out.println("Resultado = "+ aluno.getNome()+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado = "+ aluno.getNome()+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
 		   
 		   
@@ -259,7 +265,10 @@ public class SegundaClasseJava {
 		   for(Aluno aluno :maps.get(StatusAluno.RECUPERACAO)){
 			   
 			   System.out.println("Resultado  = "+ aluno.getNome() +" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado  = "+ aluno.getNome() +" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
+	  }else {
+		  JOptionPane.showInternalMessageDialog(null, "Acesso não permitido!");
 	  }
 	}
 }	
