@@ -13,6 +13,7 @@ public abstract class Pessoa {
 	 protected String nomeMae;
 	 protected String nomePai;
 	 
+	 //Metodo abstract salário criado na classe Pai em que todas as classe filha é obrigatório ter
 	 public abstract double salario();
 	 
 	public String getNome() {
@@ -69,6 +70,7 @@ public abstract class Pessoa {
 	}
 	
 	//metodo vai retornar true se for maior de 18  senão vai retorna false
+	//metodo não obrigado a ter nas classes filhas
 	public boolean pessoaMaiorIdade() {
 		return idade >= 18;
 	}

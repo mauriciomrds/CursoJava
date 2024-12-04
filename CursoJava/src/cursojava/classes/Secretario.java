@@ -1,12 +1,22 @@
 package cursojava.classes;
 
-//Classe (filha) secretario herdando da classe (Pai) Pessoa
-public class Secretario extends Pessoa {
+import cursojava.interfaces.PermitirAcesso;
 
+//Classe (filha) secretario herdando da classe (Pai) Pessoa
+public class Secretario extends Pessoa implements PermitirAcesso{
+
+	
+	
+	
 	//Atributos da classe Secretario
 	private String registro;
 	private String nivelCargo;
 	private String experiencia;
+	
+//	private String login;
+//	private String senha;
+	
+	
 	public String getRegistro() {
 		return registro;
 	}
@@ -37,6 +47,32 @@ public class Secretario extends Pessoa {
 		
 		return 3000 * 0.9;
 	}
+	
+	/*@Override //método do contrato de autenticação
+	public boolean autenticar() {
+		
+		return login.equals("admin")&& senha.equals("admin");//Retorna true caso a senha seja admin senão false
+	}*/
+	
+	@Override
+	public boolean autenticar(String login, String senha) {
+		
+		return login.equals("admin")&& senha.equals("admin");
+	}
+	
+/*	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	*/
 	
 	
 	
