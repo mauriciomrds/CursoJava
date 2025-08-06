@@ -7,30 +7,64 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
+//classe para imprimir dados do aluno com interação do usuário
 public class SegundaClasseJava {
 
 	public static void main(String[] args) {
+		
+		
+		//testando o try bloco de exceção 
+		 try {
 		
 		//Validação de acesso do Usuário no sistema de alunos
 		String login =JOptionPane.showInputDialog("Informe o seu login");
 		String senha =JOptionPane.showInputDialog("Informe sua senha");
 		
-		Secretario secretario = new Secretario();//Diretamente com objeto
+	//Amarrado mais o acesso FuncaoAutenticacao	
+ //  FuncaoAutenticacao autenticacao = new FuncaoAutenticacao();
 		
-		secretario.setLogin(login);
-		secretario.setSenha(senha);
+//	PermitirAcesso secretario = new Secretario();//Diretamente com objeto
 		
+		// secretario.setLogin(login);
+		//secretario.setSenha(senha);
 		
-		if(secretario.autenticar()) {// Se true acessa Senão não acessa
+		//Interface e Construtores forma para chamar secretario
+		//PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
-					
+		//outra forma de chamar secretario
+	/*	if(new Secretario().autenticar(login, senha)) {// Se true acessa Senão não acessa*/
 		
+		//outra forma chamando pelo metodo autenticar
+	//	if( permitirAcesso.autenticar()) {;
+		
+		//outra forma chamando do metodo autenticar acesso
+		//if (autenticacao.autenticarAcesso(permitirAcesso)) {
+		
+				
+		//Chama do metodo autenticar da FuncaoAutenticacao
+	//	if(new FuncaoAutenticacao(permitirAcesso).autenticar()) {
+		
+		// outra forma reduzindo mais o codigo e chamando secretario
+	//	if(new FuncaoAutenticacao(new Secretario(login,senha)).autenticar()) {Travar o contrato e autorizar somente quem tem 100% do contrato legitimo
+		
+		//Chamando o Diretor
+		if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {	
+			
+			
 		//Criação lista alunos
-		List<Aluno>alunos = new ArrayList<Aluno>();
+		
+			List<Aluno>alunos = new ArrayList<Aluno>();
+		
+		
+		// Gerando erro e exceção criando try e catch blocos de exceção
+		//	List<Aluno>alunos = null;
 		
 		/*
 		//Criação de nova lista de alunos APROVADO, REPROVADO E RECUPERAÇÃO
@@ -71,6 +105,7 @@ public class SegundaClasseJava {
 		String disciplina4 =JOptionPane.showInputDialog("Disciplina4");
 		String nota4 = JOptionPane.showInputDialog("Nota4 ");
 		*/
+		
 		
 		Aluno aluno1 = new Aluno();
 		
@@ -117,9 +152,10 @@ public class SegundaClasseJava {
 	    	   }
 	       }
 	       
-	       
+	       //System.out.println("Erro aqui");//adicionado uma linha antes aonde ocorreu o problema quando deixou lista de aluno sem estancia
 	       //Adicionando aluno
-	       alunos.add(aluno1);
+             alunos.add(aluno1);
+
 	       
 		   } 
 		   
@@ -244,8 +280,8 @@ public class SegundaClasseJava {
 		   
 		     for(Aluno aluno :maps.get(StatusAluno.APROVADO) ){
 			   
-			   System.out.println("Resultado =  "+ aluno.getNome()+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
-			   JOptionPane.showInternalMessageDialog(null,"Resultado =  "+ aluno.getNome()+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2() );
+			   System.out.println("Resultado =  "+ aluno.getNome()+": "+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado =  "+ aluno.getNome()+": "+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2() );
 		   }
              
 		   
@@ -254,8 +290,8 @@ public class SegundaClasseJava {
 		   
 		   for (Aluno aluno :maps.get(StatusAluno.REPROVADO)){
 			   
-			   System.out.println("Resultado = "+ aluno.getNome()+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
-			   JOptionPane.showInternalMessageDialog(null,"Resultado = "+ aluno.getNome()+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   System.out.println("Resultado = "+ aluno.getNome()+": "+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado = "+ aluno.getNome()+": "+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
 		   
 		   
@@ -264,13 +300,44 @@ public class SegundaClasseJava {
 		   
 		   for(Aluno aluno :maps.get(StatusAluno.RECUPERACAO)){
 			   
-			   System.out.println("Resultado  = "+ aluno.getNome() +" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
-			   JOptionPane.showInternalMessageDialog(null,"Resultado  = "+ aluno.getNome() +" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   System.out.println("Resultado  = "+ aluno.getNome() +": "+ " Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
+			   JOptionPane.showInternalMessageDialog(null,"Resultado  = "+ aluno.getNome() +": "+" Sua Média = "+aluno.getMediaNota()+" "+ aluno.getAlunoAprovado2());
 		   }
 	  }else {
 		  JOptionPane.showInternalMessageDialog(null, "Acesso não permitido!");
 	  }
+		
+		//bloco de exceção para imprimir erro no console
+		 }catch (Exception e) {
+			 
+			 //imprimir erro de uma forma customiza
+			 StringBuilder saida = new StringBuilder();
+			 
+			e.printStackTrace();//Imprimir erro no console java
+			
+			//Mensagem do erro ou causa
+			System.out.println("Mensagem: "+ e.getMessage());
+			
+			//For para logs de erros por posição 
+			for(int pos = 0; pos < e.getStackTrace().length; pos ++) {
+				
+			//  messagens de erros no console
+			//	System.out.println("Classe erro: "+ e.getStackTrace()[pos].getClassName());
+			//	System.out.println("Metodo de erro: "+ e.getStackTrace()[pos].getMethodName());
+			//	System.out.println("Linha de erro: "+e.getStackTrace()[pos].getLineNumber());
+				
+			// messagens de erro na caixa	
+				saida.append(" \n Classe erro: "+ e.getStackTrace()[pos].getClassName());
+				saida.append(" \n Metodo de erro: "+ e.getStackTrace()[pos].getMethodName());
+				saida.append(" \n Linha de erro: "+ e.getStackTrace()[pos].getLineNumber());
+				saida.append(" \n Class: "+ e.getClass().getName());
+			}
+				
+			//	JOptionPane.showMessageDialog(null, "Erro ao processar notas");
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas" + saida.toString());
+		}
 	}
-}	
+	}
+
 
 
