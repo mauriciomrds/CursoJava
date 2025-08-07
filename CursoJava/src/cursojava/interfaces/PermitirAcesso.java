@@ -5,5 +5,8 @@ package cursojava.interfaces;
 public interface PermitirAcesso {
 
 	
-	public boolean autenticar(); //Apenas declaração do método
+//	public boolean autenticar(); //Apenas declaração do método
+	public boolean autenticar(String login, String senha);//Construtor com parametro 
+	
+	public boolean autenticar();//Construtor sem parametro
 }

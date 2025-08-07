@@ -1,7 +1,9 @@
 package cursojava.classes;
 
+import cursojava.interfaces.PermitirAcesso;
+
 //Classe (filha) Diretor herdando da classe (Pai) Pessoa
-public class Diretor extends Pessoa{
+public class Diretor extends Pessoa implements PermitirAcesso{
 	
 	//Atributos da classe Diretor
 	private String registroEducacao;
@@ -9,6 +11,19 @@ public class Diretor extends Pessoa{
 	private String titulacao;
 	
 	
+	private String login;
+	private String senha;
+	
+	//Construtor com paramento login e senha
+	public Diretor(String login, String senha) {
+	this.login = login;
+	this.senha = senha;
+		
+	}
+	//Construtor padrão
+	public Diretor() {
+	
+	}
 	
 	public String getRegistroEducacao() {
 		return registroEducacao;
@@ -42,7 +57,19 @@ public class Diretor extends Pessoa{
 		return 5000.00;
 	}
 	
-	
+	@Override//Autenticar com dois parametros login e senha da classe PermitirAcesso
+	public boolean autenticar(String login, String senha) {
+		
+	//	return login.equals("admin")&& senha.equals("admin");
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+	@Override//Autenticar vazio padrao da classe PermitirAcesso
+	public boolean autenticar() {
+		
+		return login.equals("teste")&& senha.equals("1234");
+	}
 	
 	
 	

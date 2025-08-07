@@ -13,8 +13,22 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 	private String nivelCargo;
 	private String experiencia;
 	
-//	private String login;
-//	private String senha;
+	private String login;
+	private String senha;
+	
+	
+	
+	//Construtor com parametro
+	public Secretario(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+		
+	}
+	
+	//Construto padrao
+	public Secretario() {
+		
+	}
 	
 	
 	public String getRegistro() {
@@ -54,8 +68,16 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 		return login.equals("admin")&& senha.equals("admin");//Retorna true caso a senha seja admin senão false
 	}*/
 	
-	@Override
+	@Override//Autenticar com dois parametros login e senha da classe PermitirAcesso
 	public boolean autenticar(String login, String senha) {
+		
+	//	return login.equals("admin")&& senha.equals("admin");
+		this.login = login;
+		this.senha = senha;
+		return autenticar();
+	}
+	@Override//Autenticar vazio padrao da classe PermitirAcesso
+	public boolean autenticar() {
 		
 		return login.equals("admin")&& senha.equals("admin");
 	}
